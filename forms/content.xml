@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+	<fields name="attribs" >
+		<fieldset name="opengraph">
+			<field default="article" name="og_type" type="list" label="PLG_CONTENT_IMZOPENGRAPH_FIELD_TYPE_LABEL" description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TYPE_DESC">
+				<option value="article">article</option>  
+				<option value="blog">blog</option>  
+				<option value="website">website</option>           
+			</field>
+
+			<field name="og_title"
+				type="text"
+				label="PLG_CONTENT_IMZOPENGRAPH_FIELD_TITLE_LABEL"
+				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TITLE_DESC"
+				/> 
+
+			<field name="og_image"
+				type="media"
+				label="PLG_CONTENT_IMZOPENGRAPH_FIELD_IMAGE_LABEL"
+				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_IMAGE_DESC"
+				/>
+
+			<field name="og_description"
+				type="textarea"
+				label="PLG_CONTENT_IMZOPENGRAPH_FIELD_DESC_LABEL"
+				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_DESC_DESC"
+				/> 
+		</fieldset>
+
+		<fieldset name="twittercard">
+			<field name="tw_card" type="list" label="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWCARD_LABEL" description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWCARD_DESC">
+				<option value="">Please select</option>  
+				<option value="summary">summary</option>  
+				<option value="summary_large_image">summary_large_image</option>  
+				<option value="app">app</option>           
+				<option value="player">player</option>           
+			</field>
+
+			<field name="tw_site"
+				type="text"
+				label="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWSITE_LABEL"
+				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWSITE_DESC"
+				/> 
+
+			<field name="tw_creator"
+				type="text"
+				label="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWCREATOR_LABEL"
+				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWCREATOR_DESC"
+				/>
+		</fieldset>
+	</fields>
+</form>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="system" method="upgrade">
+	<name>PLG_SYSTEM_IMZOPENGRAPH</name>
+	<author>IMUZA.com</author>
+	<creationDate>July 2017</creationDate>
+	<copyright>Copyright (C)2017 IMUZA.com. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail></authorEmail>
+	<authorUrl>www.imuza.com</authorUrl>
+	<version>0.0.1</version>
+	<description>PLG_SYSTEM_IMZOPENGRAPH_XML_DESCRIPTION</description>
+	<files>
+		<folder>forms</folder>
+		<filename plugin="imzopengraph">imzopengraph.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages>
+		<language tag="ja-JP">language/ja-JP/ja-JP.plg_system_imzopengraph.ini</language>
+		<language tag="ja-JP">language/ja-JP/ja-JP.plg_system_imzopengraph.sys.ini</language>
+	</languages>
+	<config>
+	    <fields name="params">
+	        <fieldset name="basic">
+	            <field name="imzopengraphtitle"
+	            	type="text"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TITLE_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TITLE_DESC"
+	            	/>
+	            <field name="imzopengraphtype"
+	            	type="list"
+	            	default="website"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TYPE_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TYPE_DESC">
+	                <option value="website">website</option>
+	                <option value="blog">blog</option>
+	                <option value="article">article</option>
+	            </field>
+	            <field name="imzopengraphimage"
+	            	type="media"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_IMAGE_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_IMAGE_DESC"
+	            	/>
+	            <field name="imzopengraphdesc"
+	            	type="text"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_DESC_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_DESC_DESC"
+	            	/>
+	            <field name="imzopengraphsitename"
+	            	type="text"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_SITENAME_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_SITENAME_DESC"
+	            	/>
+	            <field name="imzopengraphfbappid"
+	            	type="text"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_FBAPPID_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_FBAPPID_DESC"
+	            	/>
+	        </fieldset>
+			<fieldset name="twittercard" >
+				<field name="tw_card"
+	            	default="summary"
+					type="list"
+					label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWCARD_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWCARD_DESC">
+					<option value="summary">summary</option>  
+					<option value="summary_large_image">summary_large_image</option>  
+					<option value="app">app</option>           
+					<option value="player">player</option>           
+				</field>
+				<field name="tw_site"
+					type="text"
+					label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWSITE_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWSITE_DESC"
+					/> 
+
+				<field name="tw_creator"
+					type="text"
+					label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWCREATOR_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWCREATOR_DESC"
+					/>
+			</fieldset>
+	    </fields>
+	</config>
+</extension>
