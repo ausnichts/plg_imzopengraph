@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>www.imuza.com</authorUrl>
-	<version>0.0.1</version>
+	<version>1.0.0b2</version>
 	<description>PLG_SYSTEM_IMZOPENGRAPH_XML_DESCRIPTION</description>
 	<files>
 		<folder>forms</folder>
@@ -21,11 +21,6 @@
 	<config>
 	    <fields name="params">
 	        <fieldset name="basic">
-	            <field name="imzopengraphtitle"
-	            	type="text"
-	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TITLE_LABEL"
-	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TITLE_DESC"
-	            	/>
 	            <field name="imzopengraphtype"
 	            	type="list"
 	            	default="website"
@@ -35,6 +30,11 @@
 	                <option value="blog">blog</option>
 	                <option value="article">article</option>
 	            </field>
+	            <field name="imzopengraphtitle"
+	            	type="text"
+	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TITLE_LABEL"
+	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TITLE_DESC"
+	            	/>
 	            <field name="imzopengraphimage"
 	            	type="media"
 	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_IMAGE_LABEL"
@@ -55,8 +55,21 @@
 	            	label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_FBAPPID_LABEL"
 	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_FBAPPID_DESC"
 	            	/>
-	        </fieldset>
-			<fieldset name="twittercard" >
+				<field
+					name="og_content_default"
+					type="radio"
+					label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_CONTENT_OG_DEFAULT_LABEL"
+					description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_CONTENT_OG_DEFAULT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">PLG_CONTENT_IMZOPENGRAPH_FIELD_ACTIVE_YES</option>
+					<option value="0">PLG_CONTENT_IMZOPENGRAPH_FIELD_ACTIVE_NO</option>
+				</field>
+
+
+				<field type="spacer" name="myspacer" hr="true" />
+
 				<field name="tw_card"
 	            	default="summary"
 					type="list"
@@ -78,6 +91,18 @@
 					label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWCREATOR_LABEL"
 	            	description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_TWCREATOR_DESC"
 					/>
+				<field
+					name="tw_content_default"
+					type="radio"
+					label="PLG_SYSTEM_IMZOPENGRAPH_FIELD_CONTENT_TW_DEFAULT_LABEL"
+					description="PLG_SYSTEM_IMZOPENGRAPH_FIELD_CONTENT_TW_DEFAULT_DESC"
+					class="btn-group btn-group-yesno"
+					default="0"
+					>
+					<option value="1">PLG_CONTENT_IMZOPENGRAPH_FIELD_ACTIVE_YES</option>
+					<option value="0">PLG_CONTENT_IMZOPENGRAPH_FIELD_ACTIVE_NO</option>
+				</field>
+
 			</fieldset>
 	    </fields>
 	</config>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<fields name="attribs" >
+	<fields name="params" >
 		<fieldset name="opengraph">
 
 			<field
@@ -16,8 +16,8 @@
 			</field>
 
 			<field
-				default="article"
 				name="og_type"
+				default="website"
 				type="list"
 				label="PLG_CONTENT_IMZOPENGRAPH_FIELD_TYPE_LABEL"
 				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TYPE_DESC"
@@ -51,9 +51,9 @@
 				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_DESC_DESC"
 				showon="og_active:1"
 				/> 
-			
+				
 			<field type="spacer" name="myspacer" hr="true" />
-			
+
 			<field
 				name="tw_active"
 				type="radio"
@@ -95,7 +95,6 @@
 				description="PLG_CONTENT_IMZOPENGRAPH_FIELD_TWCREATOR_DESC"
 				showon="tw_active:1"
 				/>
-
 		</fieldset>
 	</fields>
 </form>
