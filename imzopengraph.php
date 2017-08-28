@@ -37,7 +37,7 @@ class plgSystemImzOpenGraph extends JPlugin {
 	}
 
 
-	public function onBeforeRender() {
+	public function onBeforeCompileHead() {
 
 		$app = JFactory::getApplication();
 
@@ -78,8 +78,8 @@ class plgSystemImzOpenGraph extends JPlugin {
 			if (!empty($this->params->get('tw_site'))) $this->setTwData('twitter:site', $this->params->get('tw_site'));
 			if (!empty($this->params->get('tw_creator'))) $this->setTwData('twitter:creator', $this->params->get('tw_creator'));
 			
-		} elseif($scope !== 'com_content.article') {
-			// ホームでもなく記事でもないページはメニューで設定
+		} elseif($scope !== 'com_content.article' && !empty($thisMenu)) {
+
 			if ($thisMenu->params->get('og_active')) {
 
 				$this->type = $thisMenu->params->get('og_type');
@@ -91,7 +91,7 @@ class plgSystemImzOpenGraph extends JPlugin {
 				if(!empty($thisMenu->params->get('og_image'))) {
 					$tmp = JURI::base() . $thisMenu->params->get('og_image');
 				}else{
-					// 個別設定はしたがイメージ指定がない場合、ページ内から拾えるか？
+					//
 				}
 				if(empty($tmp) && !empty($this->params->get('imzopengraphimage'))) {
 					$tmp = JURI::base() . $this->params->get('imzopengraphimage');
@@ -104,15 +104,13 @@ class plgSystemImzOpenGraph extends JPlugin {
 				if(!empty($thisMenu->params->get('og_description'))) {
 					$tmp = $thisMenu->params->get('og_description');
 				} else {
-					// 個別設定はしたがdescription指定がない場合、ページ内から拾えるか？
+					//
 				}
 				if(empty($tmp)) {
 					$tmp = !empty($this->params->get('imzopengraphdesc')) ? $this->params->get('imzopengraphdesc') : $globalDesc;
 				}
 				$this->setOgData('og:description', $tmp);
 
-				$tmp = !empty($this->params->get('imzopengraphsitename')) ? $this->params->get('imzopengraphsitename') : $globalSitename;
-				$this->setOgData('og:site_name', $tmp);
 			}
 
 			if ($thisMenu->params->get('tw_active')) {

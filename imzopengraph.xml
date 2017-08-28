@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<authorEmail></authorEmail>
 	<authorUrl>www.imuza.com</authorUrl>
-	<version>1.0.0b2</version>
+	<version>1.0.0b3</version>
 	<description>PLG_SYSTEM_IMZOPENGRAPH_XML_DESCRIPTION</description>
 	<files>
 		<folder>forms</folder>
