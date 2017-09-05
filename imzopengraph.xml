@@ -5,9 +5,9 @@
 	<creationDate>July 2017</creationDate>
 	<copyright>Copyright (C)2017 IMUZA.com. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail></authorEmail>
+	<authorEmail>imuzacom@gmail.com</authorEmail>
 	<authorUrl>www.imuza.com</authorUrl>
-	<version>1.0.0b3</version>
+	<version>1.0.0</version>
 	<description>PLG_SYSTEM_IMZOPENGRAPH_XML_DESCRIPTION</description>
 	<files>
 		<folder>forms</folder>

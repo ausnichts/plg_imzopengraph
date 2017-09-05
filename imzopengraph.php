@@ -30,8 +30,13 @@ class plgSystemImzOpenGraph extends JPlugin {
 			$form->load($xml);
 
 		} else if($option === 'com_menus') {
-			JForm::addFormPath(__DIR__ . '/forms');
-			$form->loadFile('menu', false);
+		
+			$scope = $data['request']['option'] . '.' . $data['request']['view'];
+			$isHome = $data['home'];
+			if(empty($isHome) && $scope !== 'com_content.article') {
+				JForm::addFormPath(__DIR__ . '/forms');
+				$form->loadFile('menu', false);
+			}
 		}
 
 	}
