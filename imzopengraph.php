@@ -33,7 +33,7 @@ class plgSystemImzOpenGraph extends JPlugin {
 		
 			$scope = $data['request']['option'] . '.' . $data['request']['view'];
 			$isHome = $data['home'];
-			if(empty($isHome) && $scope !== 'com_content.article') {
+			if(empty($isHome) && $scope !== 'com_content.article' && $scope !== 'com_k2.item') {
 				JForm::addFormPath(__DIR__ . '/forms');
 				$form->loadFile('menu', false);
 			}
@@ -160,13 +160,65 @@ class plgSystemImzOpenGraph extends JPlugin {
 
 	}
 
-	function onContentBeforeDisplay($context, &$article, &$params, $limitstart) {
+	function onContentBeforeDisplay($context, &$article, &$params, $limitstart = 0) {
 
-		if($context !== 'com_content.article') {
+		if($context !== 'com_content.article' && $context !== 'com_k2.item') {
 			return;
 		}
 		
-		if ($article->params->get('og_active') || $this->params->get('og_content_default')) {
+		$plugin =& JPluginHelper::getPlugin('k2', 'imzk2opengraph');
+		
+		if (!empty($plugin)) {
+		
+			$plgparams = json_decode($article->plugins);
+			$tmp = !empty($plgparams->imzk2opengraphog_type) ? $plgparams->imzk2opengraphog_type : 'article';
+			$this->setOgData('og:type', $tmp);
+			$this->type = $tmp;
+
+			$tmp = !empty($plgparams->imzk2opengraphog_title) ? $plgparams->imzk2opengraphog_title : $article->title;
+			$this->setOgData('og:title', $tmp);
+
+			$tmp = "";
+			if(!empty($plgparams->imzk2opengraphog_image)) {
+				$tmp = JURI::base() . $plgparams->imzk2opengraphog_image;
+			}else{
+				$facebookImage = $plgparams->imzk2opengraphfacebookImage ? 'image'.$plgparams->imzk2opengraphfacebookImage : 'Small';
+				if (!empty($article->$facebookImage)) {
+					$basename = basename($article->$facebookImage);
+					if(strpos($basename, '?t=')!==false) {
+						$tmpBasename = explode('?t=', $basename);
+						$basenameWithNoTimestamp = $tmpBasename[0];
+					} else {
+						$basenameWithNoTimestamp = $basename;
+					}
+					if (JFile::exists(JPATH_SITE.'/media/k2/items/cache/'.$basenameWithNoTimestamp)) {
+						$tmp = JURI::root().'media/k2/items/cache/'.$basename;
+					}
+				}
+				if(empty($tmp)){
+					$fulltext = $article->introtext . $article->fulltext;
+					$flag = preg_match('/<img[^src]*src\s*=\s*[\"\']([^\"\']*).*>/i', $fulltext, $matches);
+					if($flag){
+						$tmp = JURI::base() . $matches[1];
+					}
+				}
+			}
+			if(empty($tmp) && !empty($this->params->imzopengraphimage)) {
+				$tmp = JURI::base() . $this->params->imzopengraphimage;
+			}
+			$this->setOgData('og:image', $tmp);
+
+			$this->setOgData('og:url', JURI::getInstance()->toString());
+			if(!empty($plgparams->imzk2opengraphog_description)) {
+				$this->setOgData('og:description', $plgparams->imzk2opengraphog_description);
+			} else {
+				$tmp = strip_tags($article->introtext);
+				$tmp = str_replace(array(PHP_EOL, "\t"), array(' ', ' '), $tmp);
+				$tmp = mb_strimwidth( $tmp, 0, 240, "...", "UTF-8" );
+				$this->setOgData('og:description', $tmp);
+			}
+		
+		} elseif ($article->params->get('og_active') || $this->params->get('og_content_default')) {
 
 			$tmp = !empty($article->params->get('og_type')) ? $article->params->get('og_type') : 'article';
 			$this->setOgData('og:type', $tmp);
