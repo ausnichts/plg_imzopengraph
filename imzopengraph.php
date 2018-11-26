@@ -31,6 +31,7 @@ class plgSystemImzOpenGraph extends JPlugin {
 
 		} else if($option === 'com_menus') {
 		
+			$data = is_object($data) ? (array) $data : $data;
 			$scope = $data['request']['option'] . '.' . $data['request']['view'];
 			$isHome = $data['home'];
 			if(empty($isHome) && $scope !== 'com_content.article' && $scope !== 'com_k2.item') {
